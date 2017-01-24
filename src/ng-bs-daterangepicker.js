@@ -19,6 +19,8 @@
 						return;
 					}
 
+					var callback = $attributes.callback && $parse($attributes.callback)($scope);
+
 					var options = {};
 					options.format = $attributes.format || 'YYYY-MM-DD';
 					options.separator = $attributes.separator || ' - ';
@@ -96,6 +98,9 @@
 								startDate: (moment.isMoment(modelValue.startDate)) ? start : start.toDate(),
 								endDate: (moment.isMoment(modelValue.endDate)) ? end : end.toDate()
 							});
+							if (callback) {
+								callback(modelValue);
+							}
 							ngModel.$render();
 						});
 
