@@ -99,7 +99,7 @@
                   endDate: (moment.isMoment(modelValue.endDate)) ? end : end.toDate()
               });
               if (callback) {
-                  callback(modelValue);
+                  callback(ngModel.$modelValue);
               }
               ngModel.$render();
             });
